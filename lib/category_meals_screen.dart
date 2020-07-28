@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class CategoryMealsScreen extends StatelessWidget {
-  static String id = 'CategoryMealsScreen';
+  static const String id = 'CategoryMealsScreen';
 
   @override
   Widget build(BuildContext context) {
