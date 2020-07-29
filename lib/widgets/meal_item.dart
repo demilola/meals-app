@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/meal.dart';
+import 'package:meals_app/screens/meal_details_screen.dart';
 
 class MealItem extends StatelessWidget {
   const MealItem({Key key, this.meal}) : super(key: key);
@@ -38,12 +39,19 @@ class MealItem extends StatelessWidget {
     }
   }
 
-  void _selectMeal() {}
+  void _selectMeal(context) {
+    Navigator.pushNamed(
+      context,
+      MealDetailsScreen.id,
+      arguments:  meal,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
-    return InkWell( //Used inkwell because of the ripple effct
-      onTap: () =>_selectMeal,
+    return InkWell(
+      //Used inkwell because of the ripple effct
+      onTap: () => _selectMeal(context),
       splashColor: Theme.of(context).accentColor,
       borderRadius: BorderRadius.circular(15),
       child: Card(
@@ -108,7 +116,7 @@ class MealItem extends StatelessWidget {
                 Row(
                   children: [
                     Icon(Icons.attach_money),
-                    // SizedBox(width: 4.0), 
+                    // SizedBox(width: 4.0),
                     Text(_affordabilityText)
                   ],
                 )
