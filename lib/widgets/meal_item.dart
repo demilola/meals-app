@@ -43,7 +43,7 @@ class MealItem extends StatelessWidget {
     Navigator.pushNamed(
       context,
       MealDetailsScreen.id,
-      arguments:  meal,
+      arguments: meal,
     );
   }
 
@@ -72,12 +72,15 @@ class MealItem extends StatelessWidget {
                     borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(15.0),
                         topRight: Radius.circular(15.0)),
+                    // child: Hero(
+                    //     tag: 'mealImage',
                     child: Image.network(
                       meal.imageUrl,
                       width: double.infinity,
                       fit: BoxFit.cover,
                       height: 200.0,
                     )),
+                // ),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 4.0),
                   width: 220.0,
