@@ -19,19 +19,17 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.lime,
         canvasColor: Color.fromRGBO(255, 254, 229, 1),
         textTheme: GoogleFonts.ralewayTextTheme().copyWith(
-          bodyText1: GoogleFonts.raleway(fontWeight: FontWeight.bold).apply(
-            color: Color.fromRGBO(20, 51, 51, 1),
-          ),
-          bodyText2: GoogleFonts.raleway(fontWeight: FontWeight.bold).apply(
-            color: Color.fromRGBO(20, 51, 51, 1),
-          ),
-          headline6: TextStyle(
-            fontSize: 22.0,
+          bodyText1: GoogleFonts.raleway(
             fontWeight: FontWeight.bold,
-            fontFamily: GoogleFonts.robotoCondensed().fontFamily,
-            color: Color.fromRGBO(20, 51, 51, 1),
-          ),
+          ).apply(color: Color.fromRGBO(20, 51, 51, 1)),
+          bodyText2: GoogleFonts.raleway(
+            fontWeight: FontWeight.bold,
+          ).apply(color: Color.fromRGBO(20, 51, 51, 1)),
+          headline6: GoogleFonts.raleway(
+            fontWeight: FontWeight.bold,
+          ).apply(color: Color.fromRGBO(20, 51, 51, 1)),
         ),
+        typography: Typography.material2018(),
         // fontFamily: GoogleFonts.raleway().fontFamily,
         // accentTextTheme: GoogleFonts.robotoCondensedTextTheme(),
         visualDensity: VisualDensity.adaptivePlatformDensity,
