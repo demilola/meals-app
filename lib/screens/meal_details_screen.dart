@@ -32,56 +32,55 @@ class MealDetailsScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(meal.title)),
       body: Column(
-          children: [
-            // Hero(
-            //   tag: 'mealImage',
-            //   child:
-            Image.network(
-              meal.imageUrl,
-              height: 250.0,
-              width: double.infinity,
-              fit: BoxFit.cover,
-            ),
-            // ),
-            _buildSectionTitle(context, 'Ingredients:'),
-//
-            Expanded(
-                          child: ListView.builder(
-                itemBuilder: (ctx, index) => Card(
-                  color: Theme.of(context).accentColor,
-                  child: Padding(
-                      padding: EdgeInsets.symmetric(
-                        vertical: 5,
-                        horizontal: 10,
-                      ),
-                      child: Text(meal.ingredients[index])),
-                ),
-                itemCount: meal.ingredients.length,
-              ),
-            ),
-
-            _buildSectionTitle(context, 'Steps'),
-            _buildContainer(
-              ListView.builder(
-                itemBuilder: (ctx, index) => Column(
-                  children: [
-                    ListTile(
-                      leading: CircleAvatar(
-                        child: Text('# ${(index + 1)}'),
-                      ),
-                      title: Text(
-                        meal.steps[index],
-                      ),
+        children: [
+          // Hero(
+          //   tag: 'mealImage',
+          //   child:
+          Image.network(
+            meal.imageUrl,
+            height: 250.0,
+            width: double.infinity,
+            fit: BoxFit.cover,
+          ),
+          // ),
+          _buildSectionTitle(context, 'Ingredients:'),
+//Wrapped the listView here with Expanded to avoid errors like height was unbounded
+          Expanded(
+            child: ListView.builder(
+              itemBuilder: (ctx, index) => Card(
+                color: Theme.of(context).accentColor,
+                child: Padding(
+                    padding: EdgeInsets.symmetric(
+                      vertical: 5,
+                      horizontal: 10,
                     ),
-                    Divider()
-                  ],
-                ),
-                itemCount: meal.steps.length,
+                    child: Text(meal.ingredients[index])),
               ),
+              itemCount: meal.ingredients.length,
             ),
-          ],
-        ),
-      
+          ),
+
+          _buildSectionTitle(context, 'Steps'),
+          _buildContainer(
+            ListView.builder(
+              itemBuilder: (ctx, index) => Column(
+                children: [
+                  ListTile(
+                    leading: CircleAvatar(
+                      child: Text('# ${(index + 1)}'),
+                    ),
+                    title: Text(
+                      meal.steps[index],
+                    ),
+                  ),
+                  Divider()
+                ],
+              ),
+              itemCount: meal.steps.length,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
