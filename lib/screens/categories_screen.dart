@@ -8,8 +8,7 @@ class CategoriesScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: GridView(
+    return GridView(
         gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
           maxCrossAxisExtent: 200.00,
           childAspectRatio: 3 / 2,
@@ -28,7 +27,7 @@ class CategoriesScreen extends StatelessWidget {
               )
               .toList()
         ],
-      ),
-    );
+      )
+    ;
   }
 }

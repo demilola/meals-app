@@ -13,19 +13,22 @@ class _TabsScreenState extends State<TabsScreen> {
     return DefaultTabController(
       length: 2,
       child: Scaffold(
-          appBar: AppBar(
-            title: Text('DeliMeal'),
-            bottom: TabBar(
-              tabs: [
-                Tab(text: 'Categories', icon: Icon(Icons.category)),
-                Tab(text: 'Favorites', icon: Icon(Icons.favorite)),
-              ],
-            ),
+        appBar: AppBar(
+          title: Text('DeliMeal'),
+          bottom: TabBar(
+            tabs: [
+              Tab(text: 'Categories', icon: Icon(Icons.category)),
+              Tab(text: 'Favorites', icon: Icon(Icons.favorite)),
+            ],
           ),
-          body: TabBarView(children: [
+        ),
+        body: TabBarView(
+          children: [
             CategoriesScreen(),
             FavoritesScreen(),
-          ])),
+          ],
+        ),
+      ),
     );
   }
 }
