@@ -16,8 +16,8 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'DeliMeals',
       theme: ThemeData(
-        primarySwatch: Colors.orange,
-        accentColor: Colors.lime,
+        primarySwatch: Colors.green,
+        // accentColor: Colors.lime,
         canvasColor: Color.fromRGBO(255, 254, 229, 1),
         textTheme: GoogleFonts.ralewayTextTheme().copyWith(
           bodyText1: GoogleFonts.raleway(
