@@ -4,6 +4,7 @@ import 'package:meals_app/models/tab.dart';
 import 'package:meals_app/screens/categories_screen.dart';
 import 'package:meals_app/screens/favorites_screen.dart';
 import 'package:meals_app/screens/filters_screen.dart';
+import 'package:meals_app/widgets/main_drawer.dart';
 
 class TabsScreen extends StatefulWidget {
   @override
@@ -25,19 +26,6 @@ class _TabsScreenState extends State<TabsScreen> {
     ),
   ];
 
-  //a list of drawer items
-  final List<DrawerItem> drawerItems = [
-    DrawerItem(
-        page: CategoriesScreen(),
-        icon: Icon(Icons.restaurant),
-        title: Text("Meals"),
-        route: '/'),
-    DrawerItem(
-        page: FiltersScreen(),
-        icon: Icon(Icons.settings),
-        title: Text("Filters"),
-        route: FiltersScreen.id),
-  ];
 
   int _selectedPageIndex = 0;
 
@@ -54,35 +42,7 @@ class _TabsScreenState extends State<TabsScreen> {
       appBar: AppBar(
         title: tabs[_selectedPageIndex].title,
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: <Widget>[
-            DrawerHeader(
-              decoration: BoxDecoration(
-                color: Theme.of(context).primaryColor,
-              ),
-              child: Center(
-                child: Text(
-                  'Cooking Up!',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 24,
-                  ),
-                ),
-              ),
-            ),
-            for (DrawerItem item in drawerItems)
-              ListTile(
-                  leading: item.icon,
-                  title: item.title,
-                  onTap: () => Navigator.pushNamed(
-                        context,
-                        item.route,
-                      )),
-          ],
-        ),
-      ),
+      drawer: MainDrawer(),
       body: IndexedStack(
         index: _selectedPageIndex,
         children: [
@@ -107,3 +67,4 @@ class _TabsScreenState extends State<TabsScreen> {
     );
   }
 }
+
