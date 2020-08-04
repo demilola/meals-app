@@ -42,6 +42,8 @@ class MainDrawer extends StatelessWidget {
             ListTile(
                 leading: item.icon,
                 title: item.title,
+
+                //pushed and replaced to avoid stacking of the pages
                 onTap: () => Navigator.pushReplacementNamed(
                       context,
                       item.route,
