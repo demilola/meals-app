@@ -3,6 +3,7 @@ import 'package:meals_app/models/drawer.dart';
 import 'package:meals_app/models/tab.dart';
 import 'package:meals_app/screens/categories_screen.dart';
 import 'package:meals_app/screens/favorites_screen.dart';
+import 'package:meals_app/screens/filters_screen.dart';
 
 class TabsScreen extends StatefulWidget {
   @override
@@ -27,15 +28,15 @@ class _TabsScreenState extends State<TabsScreen> {
   //a list of drawer items
   final List<DrawerItem> drawerItems = [
     DrawerItem(
-      page: CategoriesScreen(),
-      icon: Icon(Icons.restaurant),
-      title: Text("Meals"),
-    ),
+        page: CategoriesScreen(),
+        icon: Icon(Icons.restaurant),
+        title: Text("Meals"),
+        route: '/'),
     DrawerItem(
-      page: FavoritesScreen(),
-      icon: Icon(Icons.settings),
-      title: Text("Filters"),
-    ),
+        page: FiltersScreen(),
+        icon: Icon(Icons.settings),
+        title: Text("Filters"),
+        route: FiltersScreen.id),
   ];
 
   int _selectedPageIndex = 0;
@@ -72,7 +73,13 @@ class _TabsScreenState extends State<TabsScreen> {
               ),
             ),
             for (DrawerItem item in drawerItems)
-              ListTile(leading: item.icon, title: item.title),
+              ListTile(
+                  leading: item.icon,
+                  title: item.title,
+                  onTap: () => Navigator.pushNamed(
+                        context,
+                        item.route,
+                      )),
           ],
         ),
       ),

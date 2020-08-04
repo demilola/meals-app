@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:meals_app/screens/categories_screen.dart';
 import 'package:meals_app/screens/category_meals_screen.dart';
+import 'package:meals_app/screens/filters_screen.dart';
 import 'package:meals_app/screens/meal_details_screen.dart';
 import 'package:meals_app/screens/tabs_screen.dart';
 
@@ -45,11 +46,14 @@ class MyApp extends StatelessWidget {
               ),
             )),
       ),
-      home: TabsScreen(),
+      // home: TabsScreen(),
+      initialRoute: '/',
       routes: {
+        '/': (context) => TabsScreen(),
         CategoryMealsScreen.id: (context) => CategoryMealsScreen(),
         MealDetailsScreen.id: (context) => MealDetailsScreen(),
         CategoriesScreen.id: (context) => CategoriesScreen(),
+        FiltersScreen.id: (context) => FiltersScreen(),
       },
       // onGenerateRoute: (settings) =>
       //     MaterialPageRoute(builder: (context) => CategoriesScreen()),
