@@ -3,8 +3,11 @@ import 'package:meals_app/models/meal.dart';
 import 'package:meals_app/screens/meal_details_screen.dart';
 
 class MealItem extends StatelessWidget {
-  const MealItem({Key key, this.meal}) : super(key: key);
+  const MealItem({Key key, this.meal, this.removeItem}) : super(key: key);
   final Meal meal;
+
+  //This function is what will run when some info is passed back
+  final Function removeItem;
 
 //Getters are implemented here so as to convert the enums into Strings
   String get _complexityText {
@@ -39,12 +42,13 @@ class MealItem extends StatelessWidget {
     }
   }
 
+//This is to go to selcted mea, expect a meal id item to be returned; if a meal id is returned, do something with it
   void _selectMeal(context) {
     Navigator.pushNamed(
       context,
       MealDetailsScreen.id,
       arguments: meal,
-    );
+    ).then((result) => removeItem(meal.id));
   }
 
   @override
