@@ -16,19 +16,25 @@ class TabsScreen extends StatefulWidget {
 }
 
 class _TabsScreenState extends State<TabsScreen> {
-  //a list of nav items
-  final List<TabNavigationItem> tabs = [
-    TabNavigationItem(
-      page: CategoriesScreen(),
-      icon: Icon(Icons.category),
-      title: Text("Categories"),
-    ),
-    TabNavigationItem(
-      page: FavoritesScreen(widget.favoriteMeals),
-      icon: Icon(Icons.favorite),
-      title: Text("Favorites"),
-    ),
-  ];
+  List<TabNavigationItem> tabs = [];
+
+  @override
+  void initState() {
+    //a list of nav items
+    tabs = [
+      TabNavigationItem(
+        page: CategoriesScreen(),
+        icon: Icon(Icons.category),
+        title: Text("Categories"),
+      ),
+      TabNavigationItem(
+        page: FavoritesScreen(widget.favoriteMeals),
+        icon: Icon(Icons.favorite),
+        title: Text("Favorites"),
+      ),
+    ];
+    super.initState();
+  }
 
   int _selectedPageIndex = 0;
 
