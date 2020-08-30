@@ -17,11 +17,11 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
   List<Meal> displayedMeals;
   bool loadedInitData = false;
 
-  @override
-  void initState() {
-    //..
-    super.initState();
-  }
+  // @override
+  // void initState() {
+  //   //..
+  //   super.initState();
+  // }
 
 //had to use didChangeDependencies because ModalRoute.of(context) uses inherited widget
   @override
@@ -41,9 +41,9 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
     super.didChangeDependencies();
   }
 
-  void _removeMeal(String mealId) {
-    setState(() => displayedMeals.removeWhere((meal) => meal.id == mealId));
-  }
+  // void _removeMeal(String mealId) {
+  //   setState(() => displayedMeals.removeWhere((meal) => meal.id == mealId));
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -59,7 +59,6 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
               itemCount: displayedMeals.length,
               itemBuilder: (ctx, index) => MealItem(
                 meal: displayedMeals[index],
-                removeItem: _removeMeal,
               ),
             )
           : Center(

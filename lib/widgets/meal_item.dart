@@ -3,11 +3,11 @@ import 'package:meals_app/models/meal.dart';
 import 'package:meals_app/screens/meal_details_screen.dart';
 
 class MealItem extends StatelessWidget {
-  const MealItem({Key key, this.meal, this.removeItem}) : super(key: key);
+  const MealItem({Key key, this.meal}) : super(key: key);
   final Meal meal;
 
   //This function is what will run when some info is passed back
-  final Function removeItem;
+  // final Function removeItem;
 
 //Getters are implemented here so as to convert the enums into Strings
   String get _complexityText {
@@ -48,8 +48,9 @@ class MealItem extends StatelessWidget {
       context,
       MealDetailsScreen.id,
       arguments: meal,
-    ).then((result) => removeItem(meal.id));
-  }
+    )
+    // .then((result) => removeItem(meal.id))
+    ;}
 
   @override
   Widget build(BuildContext context) {
