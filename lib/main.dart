@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:meals_app/dummy_data.dart';
+import 'package:meals_app/models/meal.dart';
 import 'package:meals_app/screens/categories_screen.dart';
 import 'package:meals_app/screens/category_meals_screen.dart';
 import 'package:meals_app/screens/filters_screen.dart';
@@ -16,6 +18,41 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
+  Map<String, bool> _filters = {
+    'gluten': false,
+    'lactose': false,
+    'vegan': false,
+    'vegetarian': false
+  };
+
+  List<Meal> availableMeals = DUMMY_MEALS;
+
+  void _setFilters(Map<String, bool> filterData) {
+    setState(() {
+      //To accept whatever new set of values is passed from whewrever as filters
+      _filters = filterData;
+      //To make a new list implementing the new filters
+      availableMeals = DUMMY_MEALS.where((meal) {
+        //This piece of logic checks if we're filtering to get only gluten free meals, if we are, then check if the meal isn't gluten free,
+        //if it's not gluten-free, return false and the meal wont show up
+        if (_filters['gluten'] && !meal.isGlutenFree) {
+          return false;
+        }
+        if (_filters['lactose'] && !meal.isLactoseFree) {
+          return false;
+        }
+        if (_filters['vegan'] && !meal.isVegan) {
+          return false;
+        }
+        if (_filters['vegetarian'] && !meal.isVegetarian) {
+          return false;
+        } else {
+          return true;
+        }
+      }).toList();
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -55,10 +92,11 @@ class _MyAppState extends State<MyApp> {
       initialRoute: '/',
       routes: {
         '/': (context) => TabsScreen(),
-        CategoryMealsScreen.id: (context) => CategoryMealsScreen(),
+        CategoryMealsScreen.id: (context) =>
+            CategoryMealsScreen(availableMeals),
         MealDetailsScreen.id: (context) => MealDetailsScreen(),
         CategoriesScreen.id: (context) => CategoriesScreen(),
-        FiltersScreen.id: (context) => FiltersScreen(),
+        FiltersScreen.id: (context) => FiltersScreen(_filters, _setFilters),
       },
       // onGenerateRoute: (settings) =>
       //     MaterialPageRoute(builder: (context) => CategoriesScreen()),
