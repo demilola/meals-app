@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:meals_app/models/drawer.dart';
-import 'package:meals_app/screens/categories_screen.dart';
 import 'package:meals_app/screens/filters_screen.dart';
 
 class MainDrawer extends StatelessWidget {
   //a list of drawer items
   final List<DrawerItem> drawerItems = [
     DrawerItem(
-        page: CategoriesScreen(),
+        // page: CategoriesScreen(),
         icon: Icon(Icons.restaurant),
         title: Text("Meals"),
         route: '/'),
     DrawerItem(
-        page: FiltersScreen(),
+        // page: FiltersScreen(),
         icon: Icon(Icons.settings),
         title: Text("Filters"),
         route: FiltersScreen.id),
