@@ -47,18 +47,24 @@ class _CategoryMealsScreenState extends State<CategoryMealsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    /*Create a final variable that accesses the ars passed from the named route. With this, there's no need for a constructor
+    /*Create a final variable that accesses the args passed from the named route. With this, there's no need for a constructor
     To be able to access this info with [], we have to tell flutter that the object is a Map of strings*/
     return Scaffold(
-        appBar: AppBar(
-          title: Text(categoryTitle),
-        ),
-        body: ListView.builder(
-          itemCount: displayedMeals.length,
-          itemBuilder: (ctx, index) => MealItem(
-            meal: displayedMeals[index],
-            removeItem: _removeMeal,
-          ),
-        ));
+      appBar: AppBar(
+        title: Text(categoryTitle),
+      ),
+      //Check if there are any meals to show, if there are, build a listview, if not, display some text
+      body: displayedMeals.isNotEmpty
+          ? ListView.builder(
+              itemCount: displayedMeals.length,
+              itemBuilder: (ctx, index) => MealItem(
+                meal: displayedMeals[index],
+                removeItem: _removeMeal,
+              ),
+            )
+          : Center(
+              child: Text('No Meals To Show'),
+            ),
+    );
   }
 }
